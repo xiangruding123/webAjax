@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax表单验证的实现</title>
+	</head>
+	<body>
+		<input type="text" />
+		<p>需要后端接口，这里只展示前端代码的实现模块！仅供参考</p>
+	</body>
+</html>
+
+<script type="text/javascript" language="javascript">
+	
+	function IbtnEnter_onclick() {
+		checklogin();
+		return false;
+	}
+
+	function checklogin() {
+		if($("#TxtUserName").val() == "") {
+			alert("用户名不能为空！");
+			$("#TxtUserName").focus();
+			return false;
+		}
+		if($("#TxtPassword").val() == "") {
+			alert("密码不能为空！");
+			$("#TxtPassword").focus();
+			return false;
+		}
+		$.ajax({
+			type: "POST",
+			url: "ajax/Handler.ashx?M=" + Math.random(),
+			data: "username=" + $("#TxtUserName").val().toString() + "&pwd=" + $("#TxtPassword").val().toString(),
+			success: function(data) {
+				if(data == "1") {
+					location.href = "index.aspx";
+					return true;
+				} else {
+					alert("请确认您输入的用户名或密码输入是否正确！");
+					$("#TxtUserName").val("");
+					$("#TxtPassword").val("");
+					$("#TxtUserName").focus();
+					return false;
+				}
+			}
+
+		})
+	}
+</script>
