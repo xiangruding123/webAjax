@@ -1,37 +1,39 @@
 <!DOCTYPE html>
-<html lang="zh">
-
+<html>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Document</title>
+		<title>jqueryajax详细解释</title>
 	</head>
-
 	<body>
-		<div class="ajaxResult">我们的练习题</div>
+		<div class="ajaxResult"></div>
 		<script src="js/jquery-2.1.0.js"></script>
 		<script type="text/javascript">
 			var num = 10, //定义的全局变量（参数）
 				area = "青岛市市南区",
-				curpage = 1;
+				curpage = 1;    //当前页
 
 			$.ajax({
 				type: "get", //以POST或GET的方式请求。默认GET。PUT和DELETE也可以用，但并不是所有的浏览器都支持
 				url: "json/demo3.json", //请求的目的地址，须是一个字符串。
 				data: { //发送到服务器的数据的键/值对象====后台需要传过去处理的参数。get方法则附在html请求地址后面。http://192.168.1.82:8020/juzhong/test3.json?flag=wap&type=like&num=10&area=%E9%9D%92%E5%B2%9B%E5%B8%82%E5%B8%82%E5%8D%97%E5%8C%BA&curpage=1
-					flag: "wap",
-					type: 'like',
-					num: num,
-					area: area,
-					curpage: curpage
+					flag: "wap",          //可选参数
+					type: 'like',          //可选参数
+					num: num,            //可选参数
+					area: area,          //可选参数
+					curpage: curpage        //可选参数
 				},
-				dataType: "json", //想从服务器得到哪种类型的数据。xml,html,script,json,jsonp,text
+				dataType: "json", //想从服务器得到哪种类型的数据。       xml,html,script,json,jsonp,text
 				beforeSend: function(XMLHttpRequest) {
 					//传递异步请求之前的事件。
-					alert("传递异步请求之前的事件");
+					console.log("传递异步请求之前的事件!!一般不使用（根据你的情况来决定）");
 				},
 				success: function(data, textStatus) {
+					
+					console.log(data)
+					console.log(textStatus)
+					
 					//请求成功后的处理函数
 					$(".ajaxResult").html("");
 					console.log(data);
@@ -42,15 +44,16 @@
 					});
 				},
 				complete: function(XMLHttpRequest, textStatus) {
+					
+					console.log(textStatus)
 					//不管请求成功还是错误，只要请求完成，可以执行的事件。
-					alert("不管请求成功还是错误，只要请求完成，可以执行的事件。");
+					console.log("不管请求成功还是错误，只要请求完成，可以执行的事件。");
 				},
 				error: function() {
-					alert("请求出错处理");
+					console.log("error-请求出错处理");
 					//请求出错处理
 				}
 			});
 		</script>
 	</body>
-
 </html>
