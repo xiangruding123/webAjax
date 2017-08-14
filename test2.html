@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>$.each实现遍历</title>
+		<!--wangyang-->
+	</head>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		ul,li{
+			list-style: none;
+		}
+	</style>
+	<body>
+		<ul class="_ul"></ul>
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+				
+			//js填充到页面上
+			$(function() {
+				$.get("json/test2.json", function(data) {
+					//
+					if(typeof data == "string") data = eval("(" + data + ")");
+					console.log(typeof(data));
+					var arr = data.result;
+					$.each(arr, function(i) {
+						var o = arr[i];
+						console.log(o);
+
+
+						var li = $("<li></li>");
+						var img = $("<img />");
+						var a = $("<a href='##' ><span style='color:red;'>" + o.title + "</span><span>" + o.content + "</span></a>")
+						var div_01 = $("<div class='div_01'> <span class='cel_left'><em>￥</em>" + o.price1 + "</span> <span class='cel_right'>" + o.person + "</span></div>");
+
+						li.append(img);
+						li.append(a);
+						li.append(div_01);
+						$("._ul").append(li); //添加到页面的ul元素中
+
+						//给添加的元素设置样式
+						img.attr("src", "" + o.pic).css({
+							"width": "160",
+							"height": "160"
+						});
+						a.attr("href", "show.html?id=" + o.id).css("color", "black");
+						$(".div_01").css({
+							"font-size": "12",
+							"font-family": "微软雅黑"
+						});
+						$(".cel_left").css({
+							"font-size": "12",
+							"font-family": "微软雅黑",
+							"float": "left",
+							"color": "red"
+						});
+						$(".cel_right").css({
+							"font-size": "8",
+							"font-family": "微软雅黑",
+							"float": "right",
+							"color": "#777"
+						});
+						//
+						
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

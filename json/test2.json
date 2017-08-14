@@ -1,0 +1,49 @@
+{
+    "result": [
+        {
+            "id": "k1",
+            "guige": "100ml",
+            "price1": "100.29",
+            "person": "80人已购买",
+            "title": "8.3折/",
+            "content": "兰芝水库凝肌精华露60ml",
+            "pic": "img/song.JPEG"
+        },
+        {
+            "id": "k2",
+            "guige": "100ml",
+            "price1": "81.80",
+            "person": "14人已购买",
+            "title": "4.6折",
+            "content": "CLIO 珂莱殴黄金蜗牛素颜霜，黄金的蜗",
+            "pic": "img/song.JPEG"
+        },
+        {
+            "id": "k3",
+            "guige": "100ml",
+            "price1": "108.54",
+            "person": "21人已购买",
+            "title": "9.0折",
+            "content": "婵真银杏天然乳液130ml",
+            "pic": "img/song2.JPEG"
+        },
+        {
+            "id": "k4",
+            "guige": "100ml",
+            "price1": "12.09",
+            "person": "18人已购买",
+            "title": "3.1折",
+            "content": "婵真银杏天您滋润、清新的肌肤",
+            "pic": "img/song3.JPEG"
+        },
+        {
+            "id": "k5",
+            "guige": "100ml",
+            "price1": "123.89",
+            "person": "10人已购买",
+            "title": "8.9折",
+            "content": "30ml，献给您滋润、清新的肌肤",
+            "pic": "img/xudd.JPEG"
+        }
+    ]
+}
