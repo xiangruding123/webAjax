@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>类型测试</title>
+	</head>
+	<body>
+		<script src="js/jquery-2.1.0.js"></script>
+		
+		<!--1111111-->
+		<script type="text/javascript">
+			$(function() {
+				$.ajax({
+					type: "get",
+					url: "json/test1.json",
+					data: {
+						flag: "mobile",
+						mid: "m123456"
+					}, //可选参数
+					dataType: "json",
+					success: function(data) {
+						console.log(data);
+						console.log(typeof(data));          //object
+						
+					}
+				});
+			});
+		</script>
+		
+		<!--22222-->
+		<script type="text/javascript">
+			var data = {
+					"result": [
+						{
+							"brand_id": "6394",
+							"brand_name": "雪花秀/SULWHASOO",
+							"brand_mainpage_pic": "img/xu1JPG"
+						}, {
+							"brand_id": "6435",
+							"brand_name": "爱丽小屋/ETUDE HOUSE",
+							"brand_mainpage_pic": "img/xu1JPG"
+						}, {
+							"brand_id": "6676",
+							"brand_name": "A.H.C",
+							"brand_mainpage_pic": "img/xu1JPG"
+						}
+					]
+				}
+			console.log(data);
+			console.log(typeof(data));      //object
+			
+		</script>
+	</body>
+</html>

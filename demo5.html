@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="resText"></div>
+		<div id="reshtml"></div>
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$.ajax({
+					type: "get",
+					url: "json/demo5.json",
+					data: {
+						flag: "wap-mobile",
+						mid: "m123456"
+					}, //可选参数
+					dataType: "json",
+					success: function(data) {
+						console.log(data);
+						//每次插入DOM  (此方法不可取)
+						var mylist1 = $("#resText");
+						var l = data.result;
+						console.log(l);
+						for(var j = 0; j < l.length; j++) {
+							console.log(data.result[j].brand_name);
+							//var mylist1 = $("#resText");   不能在此获取dom、否则length为多长则取多少次！ 不可取
+							mylist1.append("<li>" + data.result[j].brand_name + "</li>"); //每次插入DOM
+						}
+
+						//DOM已创建，只是改变值  （该方法可取）
+						var mylist2 = $("#reshtml"),
+							listli = "";
+						var l = data.result;
+						console.log(l);
+						for(var j = 0; j < l.length; j++) {
+							console.log(data.result[j].brand_name);
+							listli += "<li>" + data.result[j].brand_name + "</li>";
+						}
+						mylist2.html(listli);
+
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

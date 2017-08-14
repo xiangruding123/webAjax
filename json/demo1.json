@@ -1,0 +1,53 @@
+{
+	"result": {
+		"banners": [
+			{
+				"banners_pic": "img/xudd8.JPG"
+			}
+		],
+		"goods_brand": [
+			{
+				"brand_id": "6394",
+				"brand_name": "雪花秀/SULWHASOO",
+				"brand_mainpage_pic": "img/mg.JPG"
+			}, {
+				"brand_id": "6435",
+				"brand_name": "爱丽小屋/ETUDE HOUSE",
+				"brand_mainpage_pic": "img/xu1.JPG"
+			}, {
+				"brand_id": "6676",
+				"brand_name": "A.H.C",
+				"brand_mainpage_pic": "img/xudd7.JPG"
+			}
+		],
+		"goods_list": [
+			{
+				"product_id": "10000049487",
+				"product_name": "伊思蜗牛霜 60ML",
+				"product_img_url": "img/shu1.jpg",
+				"real_price_dollar": "47.00",
+				"real_price_rmb": "321.95",
+				"brand_name": "伊思/It`S SKIN",
+				"vip_product_price": "173.49",
+				"is_import": "0",
+				"item_price": "￥191.00",
+				"fenhong_vip_price": "184.30",
+				"item_label": "售价"
+			}, {
+				"product_id": "10002013756",
+				"product_name": "MANDARINA DUCK 背包 AIRBAG 49T01001",
+				"product_img_url": "img/song.JPEG",
+				"real_price_dollar": "199.00",
+				"real_price_rmb": "1365.14",
+				"brand_name": "意大利鸳鸯/MANDARINA DUCK",
+				"vip_product_price": "1228.63",
+				"is_import": "1",
+				"item_price": "￥1228.63",
+				"fenhong_vip_price": "1228.63",
+				"item_label": "折扣价",
+				"import_label": "折扣价",
+				"import_price": "1228.63"
+			}
+		]
+	}
+}

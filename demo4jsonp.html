@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jsonp</title>
+	</head>
+
+	<body>
+	</body>
+
+</html>
+<script src="js/jquery-2.1.0.js"></script>
+<script type="text/javascript">
+	$.ajax({　　　　
+		url: "http://192.168.0.173:8020/webAjax/demo4jsonp.html?callback=123456",
+		　　　　dataType: "jsonp",
+		　　　　jsonpCallback: "person",
+		　　　　success: function(data) {　　　　　　
+			alert(data.name + " is a a" + data.sex);　　　　
+		}　　
+	});
+</script>

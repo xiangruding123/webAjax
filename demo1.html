@@ -1,0 +1,64 @@
+<!--
+	作者：1289431084@qq.com
+	时间：2017-08-11
+	描述：ajax的学习demo1
+-->
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="resText"></div>
+		<div id="reshtml"></div>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$.ajax({
+					type: "get",
+					url: "json/demo1.json",
+					data: {
+						flag: "wap-mobile",
+						mid: "m123456"
+					}, //可选参数
+					dataType: "json",
+					success: function(data) {
+						console.log(data);
+						console.log(data.result.banners);
+						//遍历banner数组，取到每个值;
+						for(var i = 0; i < data.result.banners.length; i++) {
+							console.log(data.result.banners[i]);
+
+							//只能用在少量需要DOM插入时使用；大量DOM数据时不可取。
+							var img = $("<img src=" + data.result.banners[i].banners_pic + " />")
+							var div = $("#resText");
+							div.append(img);
+						}
+						
+						for(var j = 0; j < data.result.goods_list.length; j++) {
+							console.log(data.result.goods_list[j].product_name);
+
+							//只能用在少量需要DOM插入时使用；大量DOM数据时不可取。
+							var html = '<div class="goods_list">' +
+								'    <dl>' +
+								'            <dt><img src=' + data.result.goods_list[j].product_img_url + '/></dt>' +
+								'            <dd>' + data.result.goods_list[j].product_name + '</dd>' +
+								'        </dl>' +
+								'</div>';
+							var div = $("#reshtml");
+							div.append(html);
+
+						}
+
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

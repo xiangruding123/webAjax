@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>ajax概念</title>
+		<style type="text/css">
+			p{
+				white-space: pre-line;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>
+			参考有道云笔记中的一篇文章来理解ajax的原理以及为什么使用它的原因、历史背景、等等！！！
+			----------------------------------------------
+			1、有什么用？
+				Ajax可以实现动态不刷新（局部刷新），就是能在不更新整个页面的前提下维护数据。这使得Web应用程序更为迅捷地回应用户动作，并避免了在网络上发送那些没有改变过的信息。
+			
+			2、优势在哪：
+				1）通过异步模式，提升了用户体验
+				2）优化了浏览器和服务器之间的传输，减少不必要的数据往返，减少了带宽占用
+				3）Ajax引擎在客户端运行，承担了一部分本来由服务器承担的工作，从而减少了大用户量下的服务器负载。
+			
+			3、什么原理：
+				它只是在服务器和客户端之间充当了一个缓冲器，让用户误以为服务没有中断。精确的说，ajax并不能提高从服务器端下载数据的速度，而只是使这个等待不那么令人沮丧。
+			
+			4、所包含的技术
+			          大家都知道ajax并非一种新的技术，而是几种原有技术的结合体。它由下列技术组合而成。
+			   1.使用CSS和XHTML来表示。
+			   2. 使用DOM模型来交互和动态显示。
+			   3.使用XMLHttpRequest来和服务器进行异步通信。
+			   4.使用javascript来绑定和调用。
+			
+			5、ajax原理和XmlHttpRequest对象
+				Ajax的原理简单来说通过XmlHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。  这其中最关键的一步就是从服务器获得请求数据。 
+			
+			XMLHttpRequest是ajax的核心机制，它是在IE5中首先引入的，是一种支持异步请求的技术。简单的说，也就是javascript可以及时向服务器提出请求和处理响应，而不阻塞用户。达到无刷新的效果。
+ 
+			  所以我们先从XMLHttpRequest讲起，来看看它的工作原理。
+			  首先，我们先来看看XMLHttpRequest这个对象的属性。
+			  它的属性有：
+			  　　onreadystatechange  每次状态改变所触发事件的事件处理程序。
+			  　　responseText     从服务器进程返回数据的字符串形式。
+			  　　responseXML    从服务器进程返回的DOM兼容的文档数据对象。
+			  　　status           从服务器返回的数字代码，比如常见的404（未找到）和200（已就绪）
+			  　　status Text       伴随状态码的字符串信息
+			  　　readyState       对象状态值
+			0 (未初始化) 对象已建立，但是尚未初始化（尚未调用open方法）
+			1 (初始化) 对象已建立，尚未调用send方法
+			2 (发送数据) send方法已调用，但是当前的状态及http头未知
+			3 (数据传送中) 已接收部分数据，因为响应及http头不全，这时通过responseBody和responseText获取部分数据会出现错误，
+			4 (完成) 数据接收完毕,此时可以通过通过responseXml和responseText获取完整的回应数据
+
+
+			6、下面是一个比较标准的创建XMLHttpRequest对象的方法。
+			
+			function CreateXmlHttp() { //非IE浏览器创建XmlHttpRequest对象 
+				if(window.XmlHttpRequest) {
+					xmlhttp = new XmlHttpRequest();
+				} //IE浏览器创建XmlHttpRequest对象 
+				if(window.ActiveXObject) {
+					try {
+						xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+					} catch(e) {
+						try {
+							xmlhttp = new ActiveXObject("msxml2.XMLHTTP");
+						} catch(ex) {}
+					}
+				}
+			}
+		
+			function Ustbwuyi() {
+				var data = document.getElementById("username").value;
+				CreateXmlHttp();
+				if(!xmlhttp) {
+					alert("创建xmlhttp对象异常！");
+					return false;
+				}
+				xmlhttp.open("POST", url, false);
+				xmlhttp.onreadystatechange = function() {
+					if(xmlhttp.readyState == 4) {
+						document.getElementById("user1").innerHTML = "数据正在加载...";
+						if(xmlhttp.status == 200) {
+							document.write(xmlhttp.responseText);
+		
+						}
+					}
+				}
+				xmlhttp.send();
+			}
+			
+			如上所示，函数首先检查XMLHttpRequest的整体状态并且保证它已经完成（readyStatus=4），即数据已经发送完毕。然后根据服务器的设定询问请求状态，如果一切已经就绪（status=200），那么就执行下面需要的操作。
+			
+			对于XmlHttpRequest的两个方法，open和send，
+			其中open方法指定了：
+			    a、向服务器提交数据的类型，即post还是get。
+			    b、请求的url地址和传递的参数。
+			    c、传输方式，false为同步，true为异步。默认为true。如果是异步通信方式(true)，客户机就不等待服务器的响应；如果是同步方式(false)，客户机就要等到服务器返回消息后才去执行其他操作。我们需要根据实际需要来指定同步方式，在某些页面中，可能会发出多个请求，甚至是有组织有计划有队形大规模的高强度的request，而后一个是会覆盖前一个的，这个时候当然要指定同步方式。
+			 Send方法用来发送请求。
+ 
+ 
+		</p>
+	</body>
+</html>
