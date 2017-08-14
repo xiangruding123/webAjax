@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax的详细解释介绍-左可亮</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//原生请求数据
+			var $ = (function() {
+				var ajax = function(url, callback) {
+					// 创建请求头
+					var xhr = new XMLHttpRequest();
+					// 兼容...
+					if(window.XMLHttpRequest) { //处理浏览器兼容
+						xhr = new XMLHttpRequest();
+					} else {
+						xhr = new ActiveXObject("Msxml2.XMLHTTP");
+						//对ie5、6等老版ie浏览器。补充：XMLHttpRequest是由微软开发，而被各大浏览器引用的。 
+					}
+					// 打开请求头
+					xhr.open("GET", url, true);
+					// 发送
+					xhr.send("");
+					//判断数据请求成功
+					xhr.onreadystatechange = function() {
+						if(xhr.readyState == 4 && xhr.status == 200) {
+							//JSON.parse()    ==>字符串数据转换为json
+							//JSON.stringify() ==>json对象转换为字符串
+							callback(JSON.parse(xhr.responseText))
+						}
+					}
+				}
+				return {
+					http: ajax
+				}
+			})();
+			
+			//============================================
+			
+			//调用原生请求数据的函数
+			$.http("json/test2.json", function(data) {
+				console.log(data);
+				console.log(typeof(data));
+			})
+		</script>
+	</body>
+</html>

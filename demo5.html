@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 	</head>
-
 	<body>
 		<div id="resText"></div>
 		<div id="reshtml"></div>
@@ -17,12 +15,14 @@
 					type: "get",
 					url: "json/demo5.json",
 					data: {
-						flag: "wap-mobile",
+						flag: "mobile",
 						mid: "m123456"
 					}, //可选参数
 					dataType: "json",
-					success: function(data) {
+					success: function(data,xx,cc) {
 						console.log(data);
+						console.log(xx);
+						console.log(cc);
 						//每次插入DOM  (此方法不可取)
 						var mylist1 = $("#resText");
 						var l = data.result;

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>wangyang</title>
+	</head>
+
+	<body>
+	</body>
+
+</html>
+
+<!--封装的一个ajax请求函数-->
+<!--这里封装的ajax是没有将json数据转换成json对象，所以在调用的时候需要使用eval方法来实现转换！！-->
+<!--建议直接在封装的时候把json数据转换成json对象，这样调用的时候就不用使用eval方法来实现转换了-->
+
+<script type="text/javascript">
+	var ajax = {
+		get: function(url, fnSucc) {
+			var xhr;  //创建请求头
+			if(window.XMLHttpRequest) { //处理浏览器兼容
+				xhr = new XMLHttpRequest();
+			} else {
+				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+			}
+			
+			xhr.open("get", url, true);  //打开请求头
+			xhr.send();                //发送
+			xhr.onreadystatechange = function() { //判断数据请求成功
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					//JSON.parse()    ==>字符串数据转换为json对象
+					//JSON.stringify() ==>json对象转换为字符串
+					//callback(JSON.parse(xhr.responseText))
+					
+					var str = xhr.responseText;  //xhr.responseText这里没有转换成json对象，所以页面调用的时候需要使用eval方法来实现转换
+					if(fnSucc) {
+						fnSucc(str); //回调函数
+					}
+				}
+			}
+		},
+		post: function(url, arg, fnSucc) {
+			var xhr;
+			if(window.XMLHttpRequest) {
+				xhr = new XMLHttpRequest();
+			} else {
+				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+				//对ie5、6等老版ie浏览器。补充：XMLHttpRequest是由微软开发，而被各大浏览器引用的。 
+			}
+			xhr.open("post", url, true);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send(arg);
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					
+					var str = xhr.responseText;
+					if(fnSucc) {
+						fnSucc(str); //回调函数
+					}
+				}
+			}
+		}
+	}
+</script>
+<!--调用-->
+<script type="text/javascript">
+	//把商品数据加载到页面中
+	var url="json/test2.json?t="+new Date().getTime();
+	ajax.get(url, function(str){
+		
+		console.log(str);       //
+		console.log(typeof(str));   //string（还没转化成object）
+		
+		//处理返回的数据的类型。使其变成object类型
+		var obj=eval("("+str+")");
+		arr=obj.result;
+		
+		console.log(obj);       //object （使用eval之后使之成为了json对象类型）
+		console.log(arr);
+		
+	});	
+</script>

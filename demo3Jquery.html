@@ -28,11 +28,14 @@
 				beforeSend: function(XMLHttpRequest) {
 					//传递异步请求之前的事件。
 					console.log("传递异步请求之前的事件!!一般不使用（根据你的情况来决定）");
+					console.log("在发送请求之前调用，并且传入一个 XMLHttpRequest 作为参数。");
 				},
 				success: function(data, textStatus) {
+					console.log("当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。");
 					
 					console.log(data)
 					console.log(textStatus)
+					
 					
 					//请求成功后的处理函数
 					$(".ajaxResult").html("");
@@ -48,11 +51,24 @@
 					console.log(textStatus)
 					//不管请求成功还是错误，只要请求完成，可以执行的事件。
 					console.log("不管请求成功还是错误，只要请求完成，可以执行的事件。");
+					console.log("当请求完成之后调用这个函数，无论成功或失败。传入 XMLHttpRequest 对象，以及一个包含成功或错误代码的字符串。");
+					
 				},
-				error: function() {
-					console.log("error-请求出错处理");
-					//请求出错处理
+//				error: function() {
+//					console.log("error-请求出错处理");
+//					//请求出错处理
+//				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log(XMLHttpRequest);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					console.log(errorThrown);
+					
+					console.log("在请求出错时调用。传入 XMLHttpRequest 对象，描述错误类型的字符串以及一个异常对象（如果有的话）");
 				}
+				
+				
 			});
 		</script>
 	</body>
