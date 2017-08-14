@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>$.each遍历</title>
+		<!--$.each遍历可用于遍历任何的集合(无论是数组或对象),如果是数组,回调函数每次传入数组的索引和对应的值,方法会返回被遍历对象的第一参数.-->
+	</head>
+
+	<body>
+		<p>$.each遍历可用于遍历任何的集合(无论是数组或对象),如果是数组,回调函数每次传入数组的索引和对应的值,方法会返回被遍历对象的第一参数.</p>
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			//$.each遍历数组
+			var str = [{"name": "limeng","email": "limeng@123.com"}, {"name": "zhanghao","email": "zhanghao@123.com"}] ;
+			
+			$.each( str , function(i, n) {
+						console.log("索引: "+i+", 对应值name为：" + n.name+", 对应值email为："+n.email);
+					});
+			
+			
+			//=================================================
+			console.log("000000000000000");
+			var arr1 = [ "one", "two", "three", "four", "five" ];
+			$.each(arr1, function(){
+				console.log(this);
+				console.log(typeof(this));      //arry-->objec
+			});
+			//输出：one   two  three  four   five
+			
+			
+			console.log("--------------------");
+			//=================================================
+			var arr1_1 = ["a", "b", "c"]
+			$.each(arr1_1, function(i,val){ 
+				console.log(i);   // 0   1   2     
+				console.log(typeof(i));   // number
+				console.log(val);   //a  b  c   
+				console.log(typeof(val));  //string
+			});
+			
+			
+			console.log("1111111111111111");
+			//=================================================
+			var arr2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+			$.each(arr2, function(i, item){
+				console.log(item[0]);
+				console.log(typeof(item[0]));            //number
+			});
+			//输出：1   4   7
+			
+			console.log("22222222222222222");
+			//=================================================
+			var obj = { "one":"1", "two":"2", "three":"3", "four":"4", "five":"5" };
+			$.each(obj, function(key, val) {
+				console.log(obj[key]);
+				console.log(typeof(obj[key]));         //object-->string
+			});
+			//输出：1   2  3  4  5
+					
+					
+		</script>
+	</body>
+
+</html>
