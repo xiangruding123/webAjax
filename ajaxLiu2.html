@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Form:liujingzhao</title>
+	</head>
+	<body>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/ajaxLiu2.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				//调用
+				var URL = "json/test1.json";
+				FL.ajaxDate('get',URL,{num: "10",curpage: "1"},function(data){
+		            if (data&&data.error === "0") {
+		                console.log(data)
+		            }
+		        });
+		        
+			});
+		</script>
+	</body>
+</html>
