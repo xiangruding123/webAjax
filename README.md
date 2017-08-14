@@ -19,7 +19,9 @@
 
 
 
-#### tst1.html/test2.html      --json返回的数据类型 string->object
+#### tst1.html/      --json返回的数据类型 string->object
+### test2.html/  wangyang-Dom直接插入的实现！！
+
 
 
 
