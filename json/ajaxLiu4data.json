@@ -1,0 +1,34 @@
+{
+	"result": [
+		{
+			"pic_url": "img/xu3.JPEG",
+			"pic_name": "吼吼吼吼吼吼好漂亮"
+		},
+		{
+			"pic_url": "img/xu1.JPG",
+			"pic_name": "吼吼吼吼吼吼好漂亮"
+		},
+		{
+			"pic_url": "img/xu2.JPEG",
+			"pic_name": "吼吼吼吼吼吼好漂亮"
+		},
+		{
+			"pic_url": "img/xu5.JPEG",
+			"pic_name": "吼吼吼吼吼吼好漂亮"
+		},
+		{
+			"pic_url": "img/xu4.JPEG",
+			"pic_name": "吼吼吼吼吼吼好漂亮"
+		},
+		{
+			"pic_url": "img/xu.JPEG",
+			"pic_name": "吼吼吼吼吼吼好漂亮"
+		},
+		{
+			"pic_url": "img/xu6.JPEG",
+			"pic_name": "吼吼吼吼吼吼好漂亮"
+		}
+	],
+	"message": "ok",
+    "status": 200
+}

@@ -1,0 +1,50 @@
+#header{
+	width: 100%;
+	height: 0.88rem;
+	background: #666666;
+	color: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+}
+#header h3{
+	width: 100%;
+	height: 100%;
+	line-height: 0.88rem;
+	text-align: center;
+	font-size: 0.40rem;
+}
+
+#section{
+	margin: 0.88rem 0;
+	width: 100%;
+	height: auto;
+}
+#section ul{
+	width: 100%;
+	height: auto;
+}
+#section ul dl{
+	width: 100%;
+	height: auto;
+}
+#section ul dl dt{
+	width: 100%;
+	/*height: 8.5rem;*/
+	height: auto;
+}
+#section ul dl dt img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#section ul dl dd{
+	text-align: center;
+	line-height: 1.2rem;
+	width: 100%;
+	height: 1.2rem;
+	font-size: 0.32rem;
+}
+/*=======*/

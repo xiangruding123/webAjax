@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="blank" />
+		<meta name="format-detection" content="telephone=no" />
+		<title>列表页</title>
+		
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="js/jquery-2.1.0.js"></script>
+		<!--<script src="js/jquery-1.8.3.min.js"></script>-->
+		<!--<script src="js/jquery-1.11.0.js"></script>-->
+		<!--<script src="js/jquery-1.11.3.min.js"></script>-->
+	</head>
+
+	<body>
+		<section id="html"></section>
+		<script type="text/html" id="tpl">
+		<%if(result){%>
+			<%for(var i=0;i<result.length;i++){%>
+				<section id="content">
+					<a class="contenta" href="test.html" style="display: inline-block;">
+						<div class="title">
+							<img src="<%=result[i].evt_pic%>" />
+							<p class="titledesc par3">
+								<%=result[i].evt_title%>
+							</p>
+						</div>
+						<div class="article par3">
+							<p class="abstract">
+								<%=result[i].evt_content%>
+							</p>
+							<p class="details">详情</p>
+						</div>
+					</a>
+				</section>
+			<%}%>
+		<%}%>			
+		</scrtpt>		
+		
+		<script src="js/rem.min.js"></script>
+		<script src="js/template.min.js"></script>
+		<script type="text/javascript">
+			
+			$(function() {
+				$.ajax({
+					type: "get",
+					url: "json/ajaxLiu3data.json",
+					data: {
+						flag: "wap"
+					},
+					dataType: "json",
+					success: function(data) {
+						if(data && data.result) {
+							console.log(data);
+
+							var html = template('tpl', data);
+							$('#html').html(html);
+
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

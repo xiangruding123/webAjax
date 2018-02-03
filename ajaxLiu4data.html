@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>女神</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/test.css"/>
+	</head>
+	<body>
+		<header id="header">
+			<h3>这是我女神</h3>
+		</header>
+		<section id="section">
+			<ul class="html">
+				<script type="text/html" id="tpl">
+					<%if(result){%>
+						<%for(var i=0;i<result.length;i++){%>
+							<li>
+								<dl>
+									<dt><img src="<%=result[i].pic_url%>"/></dt>
+									<dd><%=result[i].pic_name%></dd>
+								</dl>
+							</li>
+						<%}%>
+					<%}%>
+				</script>
+			</ul>
+		</section>
+		<footer id="footer">
+			
+		</footer>
+		<!--=====-->
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/rem.min.js"></script>
+		<script src="js/template.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$.ajax({
+					type: "get",
+					url: "json/ajaxLiu4data.json",
+					data: {
+						flag: "wap"
+					},
+					dataType: "json",
+					success: function(data) {
+						if(data&&data.result){
+							console.log();
+							
+							var html = template('tpl',data);
+							$('.html').html(html);
+			
+						}
+						
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
